@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AdventOfCode.AdventDays.Day1
+﻿namespace AdventOfCode.AdventDays.Day1
 {
     public class FindDistance_Part1
     {
