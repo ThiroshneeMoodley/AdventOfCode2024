@@ -10,7 +10,7 @@
                 StreamReader sr = new StreamReader("C:\\My Repos\\AdventOfCode\\AdventDays\\Day1\\input.txt");
                 line = sr.ReadLine() ?? "";
                 
-                while (line != null)
+                while (line != null && line != "")
                 {
                     Console.WriteLine(line);
 
