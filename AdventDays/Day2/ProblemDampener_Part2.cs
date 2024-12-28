@@ -38,36 +38,47 @@
                                 if (Math.Abs(firstLevel - secondLevel) > 3 || firstLevel == secondLevel)
                                 {
                                     // re-do pattern check.
-                                    // re-do pattern check.
 
                                     int newFirstLevel = 0;
                                     int newSecondLevel = 0;
 
-                                    if (i != 0)
+                                    if (i == 0)
+                                    {
+                                        newFirstLevel = Convert.ToInt32(levels[1]);
+                                        newSecondLevel = Convert.ToInt32(levels[2]);
+                                    }
+                                    else if (i == levels.Length - 1)
+                                    {
+                                        break;
+                                    }
+                                    else if (i == levels.Length - 2)
+                                    {
+                                        newFirstLevel = Convert.ToInt32(levels[i]);
+                                        newSecondLevel = Convert.ToInt32(levels[i]) + 1;
+                                    }
+                                    else
                                     {
                                         newFirstLevel = Convert.ToInt32(levels[i - 1]);
-                                    }
-                                    if (i != levels.Length)
-                                    {
                                         newSecondLevel = Convert.ToInt32(levels[i + 1]);
                                     }
 
-
-                                    if (Math.Abs(newFirstLevel - newSecondLevel) > 3 || newFirstLevel == secondLevel)
+                                    if (Math.Abs(newFirstLevel - newSecondLevel) > 3 || newFirstLevel == newSecondLevel)
                                     {
                                         Console.WriteLine(line + " is unsafe");
                                         break;
                                     }
                                     else if (Math.Abs(newFirstLevel - newSecondLevel) <= 3 && levels.Length - 1 == i + 1)
                                     {
-                                        Console.WriteLine(line + " is safe");
+                                        Console.WriteLine(line + " is safe - tolerated " + levels[i]);
                                         safetyCounter++;
+                                        break;
                                     }
                                 }
                                 else if (Math.Abs(firstLevel - secondLevel) <= 3 && levels.Length - 1 == i + 1)
                                 {
-                                    Console.WriteLine(line + " is safe");
+                                    Console.WriteLine(line + " is safe - tolerated " + levels[i]);
                                     safetyCounter++;
+                                    break;
                                 }
                             }
                             else
@@ -76,13 +87,19 @@
 
                                 int newFirstLevel = 0;
                                 int newSecondLevel = 0;
-
-                                if (i != 0)
+                                
+                                if (i == 0)
+                                {
+                                    newFirstLevel = Convert.ToInt32(levels[1]);
+                                    newSecondLevel = Convert.ToInt32(levels[2]);
+                                }
+                                else if (i == levels.Length)
+                                {
+                                    newSecondLevel = Convert.ToInt32(levels[levels.Length - 1]);
+                                }
+                                else
                                 {
                                     newFirstLevel = Convert.ToInt32(levels[i - 1]);
-                                }
-                                if (i != levels.Length)
-                                {
                                     newSecondLevel = Convert.ToInt32(levels[i + 1]);
                                 }
 
@@ -93,8 +110,9 @@
                                 }
                                 else if (Math.Abs(newFirstLevel - newSecondLevel) <= 3 && levels.Length - 1 == i + 1)
                                 {
-                                    Console.WriteLine(line + " is safe");
+                                    Console.WriteLine(line + " is safe - tolerated " + levels[i]);
                                     safetyCounter++;
+                                    break;
                                 }
                             }
                         }
